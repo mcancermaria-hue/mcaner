@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마뗄암재단 20주년 기념 음악회</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Malgun Gothic', '맑은 고딕', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8fffe 0%, #e8f5f1 100%);
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(29, 181, 132, 0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1db584 0%, #16a085 100%);
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="8" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="6" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="4" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="80" r="5" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-50px) translateY(-50px) rotate(0deg); }
+            100% { transform: translateX(-50px) translateY(-50px) rotate(360deg); }
+        }
+
+        .logo-container {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .main-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .sub-title {
+            font-size: 16px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section {
+            padding: 30px 25px;
+            border-bottom: 1px solid #e8f5f1;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1db584;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #1db584, #7bc4b0);
+            border-radius: 2px;
+        }
+
+        .invitation-text {
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: justify;
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(29, 181, 132, 0.1) 0%, rgba(123, 196, 176, 0.1) 100%);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #1db584;
+            margin: 20px 0;
+        }
+
+        .event-details {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(29, 181, 132, 0.1);
+            border: 1px solid #e8f5f1;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f8fffe;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .detail-emoji {
+            font-size: 20px;
+            margin-right: 15px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .detail-content {
+            flex: 1;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: #1db584;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            color: #333;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .program-section {
+            background: linear-gradient(135deg, #f8fffe 0%, #e8f5f1 50%, #f8fffe 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .program-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(29, 181, 132, 0.1);
+            border-left: 4px solid #1db584;
+        }
+
+        .program-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .program-time {
+            font-weight: bold;
+            color: #1db584;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .program-title {
+            font-weight: bold;
+            color: #333;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .program-detail {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .contact-section {
+            background: #1db584;
+            color: white;
+            text-align: center;
+            border-radius: 15px;
+            margin: 20px;
+            padding: 30px 25px;
+        }
+
+        .contact-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .phone-number {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .contact-note {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 15px;
+        }
+
+        .decoration {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .decoration::before {
+            content: '✨ ✨ ✨';
+            color: #1db584;
+            font-size: 20px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            .section {
+                padding: 25px 20px;
+            }
+            
+            .main-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 메인 헤더 -->
+        <div class="header">
+            <div class="logo-container">
+                <img src="data:image/png;base64,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" alt="마뗄암재단 로고" class="logo">
+            </div>
+            <h1 class="main-title">창립 20주년 기념미사와 음악회</h1>
+            <p class="sub-title">2025년 10월 15일 (수) 오후 2시</p>
+        </div>
+
+        <!-- 초대하는 글 -->
+        <div class="section">
+            <h2 class="section-title">초대합니다!</h2>
+            <div class="highlight">
+                <p class="invitation-text">
+                    하느님의 사랑이 언제나 함께 하시기를 기도합니다.
+                </p>
+                <p class="invitation-text">
+                    암환자 지원사업을 펼쳐온 마뗄암재단이 창립 20주년을 맞이하였습니다. 
+                    염수정 안드레아 추기경님과 여러분을 모시고 하느님께 감사와 찬양을 드리는 
+                    기쁨의 시간을 갖고자 합니다.
+                </p>
+                <p class="invitation-text">
+                    기념 미사와 축하식에 여러분을 초대하오니 오셔서 기쁨을 함께 나누어주십시오.
+                </p>
+            </div>
+        </div>
+
+        <!-- 행사 상세 정보 -->
+        <div class="section">
+            <h2 class="section-title">행사 안내</h2>
+            
+            <div class="event-details">
+                <div class="detail-item">
+                    <div class="detail-emoji">📅</div>
+                    <div class="detail-content">
+                        <div class="detail-label">일시</div>
+                        <div class="detail-value">2025년 10월 15일 (수) 오후 2시</div>
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-emoji">📍</div>
+                    <div class="detail-content">
+                        <div class="detail-label">장소</div>
+                        <div class="detail-value">명동성당 꼬스트홀 2층</div>
+                    </div>
+                </div>
+                                
+                <div class="detail-item">
+                    <div class="detail-emoji">🎁</div>
+                    <div class="detail-content">
+                        <div class="detail-label">기념품</div>
+                        <div class="detail-value">참석하시는 분들께는 기념품을 증정드립니다</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-section">
+                <div class="program-item">
+                    <div class="program-time">오후 2시 ~ 3시</div>
+                    <div class="program-title">기념 미사</div>
+                    <div class="program-detail">주례: 염수정 안드레아 추기경님</div>
+                </div>
+                
+                <div class="program-item">
+                    <div class="program-time">오후 3시 ~ 4시 50분</div>
+                    <div class="program-title">축하 공연</div>
+                    <div class="program-detail">
+                        • 김포가톨릭문화원 찬양<br>
+                        • 초대가수: 바다, 김시연, 이주호
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 오시는 길 -->
+        <div class="section">
+            <h2 class="section-title">오시는 길</h2>
+            <div class="event-details">
+                <div class="detail-item">
+                    <div class="detail-emoji">🏛️</div>
+                    <div class="detail-content">
+                        <div class="detail-label">명동성당 꼬스트홀 2층</div>
+                        <div class="detail-value">명동성당 우측편에 있습니다</div>
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-emoji">📍</div>
+                    <div class="detail-content">
+                        <div class="detail-label">주소</div>
+                        <div class="detail-value">서울특별시 중구 명동2가 1</div>
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-emoji">🚗</div>
+                    <div class="detail-content">
+                        <div class="detail-label">주차 안내</div>
+                        <div class="detail-value">주차가 어려우니 대중교통을 이용해 주세요</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="decoration"></div>
+
+        <!-- 연락처 -->
+        <div class="contact-section">
+            <div class="contact-title">문의 및 연락처</div>
+            <div class="phone-number">010-3355-1946</div>
+            <div style="font-size: 18px; margin-bottom: 10px;">마뗄암재단</div>
+            <div class="contact-note">궁금한 사항이 있으시면 언제든 연락 주세요</div>
+        </div>
+    </div>
+</body>
+</html>
